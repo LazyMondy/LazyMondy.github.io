@@ -1,92 +1,94 @@
-<img src="https://raw.githubusercontent.com/hexojs/logo/master/hexo-logo-avatar.png" alt="Hexo logo" width="100" height="100" align="right" />
+﻿# LazyMondy · 慢调周记
 
-# Hexo Template
+> 一个不赶时间的角落,记录从容生活中的灵感、思考与慢节奏美学。
+> 这里没有 deadline,只有星期绕着我转的悠闲。
 
-> A fast, simple & powerful blog framework, powered by [Node.js](https://nodejs.org). Here is the template of it.
+线上访问:[https://lazymondy.github.io](https://lazymondy.github.io)
 
-[Demo](https://mmdjiji.github.io/hexo-template) |
-[Official Website](https://hexo.io) |
-[Documentation](https://hexo.io/docs/) |
-[GitHub](https://github.com/mmdjiji/hexo-template)
+---
 
-## CI/CD
+## 站点概览
 
-This repository uses GitHub Actions for CI/CD. You don't need to build your documents manually. Just commit your documents (then run `git push`), and then turn on the GitHub Pages in the settings to access your online documents. (For this demo is https://mmdjiji.github.io/hexo-template)
+- **博客框架**:Hexo 8.x
+- **主题**:Butterfly 5.x
+- **构建方式**:GitHub Actions 自动构建并部署到 GitHub Pages
+- **建站时间**:2026 年 7 月 10 日 22:57 起
 
-## !!! Attention !!!
+## 特色功能
 
-There are two lines to modify in `_config.yml`:
+- **原创短诗周记**:每周一篇图文并茂的生活记录
+- **多主题色切换**:暖木质大地 / 自然绿 / 海港蓝 / 黄昏橘四种配色
+- **3D 标签云**:Fibonacci 球形分布,鼠标交互暂停旋转
+- **鼠标特效**:光珠拖尾 + 点击烟花爆炸粒子
+- **起始页 Welcome Gate**:全屏欢迎页,点击"开启"进入博客
+- **时光页面**:建站计时 + 节日倒计时
+- **留言弹幕**:轻量弹幕留言区
+- **本周签引言块**:文章末尾原创诗句引言
 
-1. (At line 16) Set your site url here. For example, if you use GitHub Page, set url as `https://username.github.io/project`:
-```yml
-url: https://jiji.pro/hexo-template
+## 目录结构
+
+```
+source/
+├── _posts/              # 博客文章(每篇含独立 images/ 子目录)
+├── about/               # 关于页
+├── categories/          # 分类页
+├── custom/               # 自定义脚本与样式
+│   ├── cursor-effects.js       # 鼠标拖尾 + 烟花特效
+│   ├── tag-cloud-3d.js          # 3D 标签云
+│   ├── welcome-gate.js          # 起始页
+│   ├── timeline.js              # 时光页面计时
+│   ├── theme-switch.js          # 主题色切换
+│   ├── danmaku.js               # 弹幕留言
+│   └── week-sign.js             # 本周签引言
+├── essays/              # 闲言页
+├── images/              # 封面与公共图片
+├── links/              # 友链页
+├── message/            # 留言页
+├── tags/               # 标签页
+└── timeline/           # 时光页(建站计时 + 节日倒计时)
 ```
 
-2. (At line 107) Set your project name here, if your project name is `username` or `username.github.io`, just remove it at the end of `_config.yml`:
-```yml
-root: /hexo-template
-```
+## 本地运行
 
-**If you would not like to do so, it cannot work correctly.**
-
-## Hexo Features
-
-- Blazing fast generating
-- Support for GitHub Flavored Markdown and most Octopress plugins
-- One-command deploy to GitHub Pages, Heroku, etc.
-- Powerful API for limitless extensibility
-- Hundreds of [themes](https://hexo.io/themes/) & [plugins](https://hexo.io/plugins/)
-
-## Commands
-
-**Install Hexo**
-
-``` bash
-$ npm install hexo-cli -g
-```
-
-Install with [brew](https://brew.sh/) on macOS and Linux:
+需要预先安装 [Node.js](https://nodejs.org/) 18+。
 
 ```bash
-$ brew install hexo
+# 安装依赖
+npm install
+
+# 本地预览(http://localhost:4000/)
+npx hexo server
+
+# 生成静态文件到 public/
+npx hexo generate
 ```
 
-**Setup your blog**
+## 部署说明
 
-``` bash
-$ hexo init blog
-$ cd blog
-```
+仓库已配置 GitHub Actions(见 `.github/workflows/gh-pages.yml`):
 
-**Start the server**
+1. 向 `main` 分支推送代码
+2. Actions 自动执行 `npm install` + `npm run build`
+3. 将生成的 `public/` 推送到 `gh-pages` 分支
+4. GitHub Pages 自动发布到 `https://lazymondy.github.io`
 
-``` bash
-$ hexo server
-```
+无需手动构建,只需提交源码。
 
-**Create a new post**
+## 写作规范
 
-``` bash
-$ hexo new "Hello Hexo"
-```
+新文章请遵循 `规则流程/博客写作与目录规范.md`,要点:
 
-**Generate static files**
+- 每篇文章配独立封面缩略图(`source/images/cover-xxx.svg`)
+- Front Matter 必须包含 `cover` 字段
+- 文章内 SVG 插图放在文章同名子目录的 `images/` 下
+- 仅首篇文章 LazyMondy 使用 `sticky` 置顶,其他文章不加
+- 内容为原创短诗/随笔,不引用他人诗句
 
-``` bash
-$ hexo generate
-```
+## 联系
 
-## More Information
+- 邮箱:2713247438@qq.com
+- 站点:[https://lazymondy.github.io](https://lazymondy.github.io)
 
-- Read the [documentation](https://hexo.io/)
-- Visit the [Awesome Hexo](https://github.com/hexojs/awesome-hexo) list
-- Find solutions in [troubleshooting](https://hexo.io/docs/troubleshooting.html)
-- Join discussion on [Google Group](https://groups.google.com/group/hexo), [Discord](https://discord.gg/teM2Anj), [Gitter](https://gitter.im/hexojs/hexo) or [Telegram](https://t.me/hexojs)
-- See the [plugin list](https://hexo.io/plugins/) and the [theme list](https://hexo.io/themes/) on wiki
-- Follow [@hexojs](https://twitter.com/hexojs) for latest news
+## 许可
 
-## License
-
-Follows [hexojs/hexo](https://github.com/hexojs/hexo) , use [MIT License](LICENSE).
-
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhexojs%2Fhexo.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhexojs%2Fhexo?ref=badge_large)
+本项目采用 [MIT License](LICENSE)。
