@@ -1,0 +1,60 @@
+/* ============================================================
+   LazyMondy · 慢调周记 — 本周签
+   ------------------------------------------------------------
+   文章末尾自动插入的原创诗句引言块
+   按月份切换,纯前端,无 AI,无后端
+   ============================================================ */
+
+.lm-week-sign {
+  margin: 2.5em 0 1.5em;
+  padding: 1.2em 1.6em;
+  border-left: 3px solid var(--lm-c-main, #a8744a);
+  background: var(--lm-c-tint, rgba(168, 116, 74, 0.08));
+  border-radius: 4px;
+  position: relative;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.lm-week-sign::before {
+  content: '本周签';
+  display: block;
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--lm-c-main, #a8744a);
+  margin-bottom: 0.6em;
+}
+
+.lm-week-sign .lm-sign-text {
+  display: block;
+  font-size: 1.08em;
+  line-height: 1.9;
+  color: #555;
+  font-style: italic;
+}
+
+.lm-week-sign .lm-sign-date {
+  display: block;
+  margin-top: 0.7em;
+  font-size: 0.78em;
+  font-style: normal;
+  color: #999;
+  text-align: right;
+  letter-spacing: 1px;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .lm-week-sign,
+[data-mode="dark"] .lm-week-sign {
+  background: rgba(168, 116, 74, 0.06);
+}
+
+[data-theme="dark"] .lm-week-sign .lm-sign-text,
+[data-mode="dark"] .lm-week-sign .lm-sign-text {
+  color: #bbb;
+}
+
+[data-theme="dark"] .lm-week-sign .lm-sign-date,
+[data-mode="dark"] .lm-week-sign .lm-sign-date {
+  color: #777;
+}

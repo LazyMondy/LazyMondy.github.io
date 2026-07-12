@@ -1,0 +1,611 @@
+/* ============================================================
+   LazyMondy · 慢调周记 — 多主题色自由切换 v2
+   ------------------------------------------------------------
+   直接覆盖 Butterfly 5.x 实际使用的 CSS 变量
+   配合 theme-switch.js 提供选择面板
+   ============================================================ */
+
+/* ============================================================
+   1. 主题色定义
+   ============================================================ */
+
+/* 默认:暖木质大地色 */
+:root {
+  --lm-c-main: #a8744a;
+  --lm-c-hover: #8d5e36;
+  --lm-c-alpha25: rgba(168, 116, 74, 0.25);
+  --lm-c-alpha50: rgba(168, 116, 74, 0.5);
+  --lm-c-alpha75: rgba(168, 116, 74, 0.75);
+  --lm-c-tint: rgba(168, 116, 74, 0.08);
+}
+
+/* 自然绿 */
+:root[data-lm-theme="forest"] {
+  --lm-c-main: #6b8e5a;
+  --lm-c-hover: #557a45;
+  --lm-c-alpha25: rgba(107, 142, 90, 0.25);
+  --lm-c-alpha50: rgba(107, 142, 90, 0.5);
+  --lm-c-alpha75: rgba(107, 142, 90, 0.75);
+  --lm-c-tint: rgba(107, 142, 90, 0.08);
+}
+
+/* 雾霾蓝灰 */
+:root[data-lm-theme="mist"] {
+  --lm-c-main: #6b88a8;
+  --lm-c-hover: #52739a;
+  --lm-c-alpha25: rgba(107, 136, 168, 0.25);
+  --lm-c-alpha50: rgba(107, 136, 168, 0.5);
+  --lm-c-alpha75: rgba(107, 136, 168, 0.75);
+  --lm-c-tint: rgba(107, 136, 168, 0.08);
+}
+
+/* 极简黑白灰 */
+:root[data-lm-theme="mono"] {
+  --lm-c-main: #3a3a3a;
+  --lm-c-hover: #1f1f1f;
+  --lm-c-alpha25: rgba(58, 58, 58, 0.25);
+  --lm-c-alpha50: rgba(58, 58, 58, 0.5);
+  --lm-c-alpha75: rgba(58, 58, 58, 0.75);
+  --lm-c-tint: rgba(58, 58, 58, 0.08);
+}
+
+/* ============================================================
+   2. 覆盖 Butterfly 核心颜色变量(关键修复)
+   Butterfly 5.x 实际使用 --theme-color 系列变量
+   ============================================================ */
+:root {
+  --theme-color: var(--lm-c-main) !important;
+  --theme-color-hover: var(--lm-c-hover) !important;
+  --theme-color-alpha25: var(--lm-c-alpha25) !important;
+  --theme-color-alpha50: var(--lm-c-alpha50) !important;
+  --theme-color-alpha75: var(--lm-c-alpha75) !important;
+
+  /* 兼容一些可能的旧变量名 */
+  --main-color: var(--lm-c-main) !important;
+  --main: var(--lm-c-main) !important;
+  --main-hover: var(--lm-c-hover) !important;
+  --main-opacity: var(--lm-c-tint) !important;
+}
+
+/* ============================================================
+   3. 强制覆盖关键元素颜色(双保险,用 !important)
+   ============================================================ */
+
+/* 链接 */
+a:not(.article-title),
+#article-container a:not(.article-title),
+.article-container a:not(.article-title),
+.article-content a:not(.article-title),
+.post-content a:not(.article-title),
+#post a:not(.article-title),
+#page a:not(.article-title) {
+  color: var(--lm-c-main) !important;
+}
+
+a:not(.article-title):hover,
+#article-container a:not(.article-title):hover,
+.article-container a:not(.article-title):hover,
+.post-content a:not(.article-title):hover,
+#nav a:not(.article-title):hover {
+  color: var(--lm-c-hover) !important;
+}
+
+/* 站点名 / 导航 */
+#site-name,
+#site-title,
+.site-title,
+#nav .site-page,
+#nav .menu-item a {
+  color: var(--lm-c-main) !important;
+}
+
+#site-name:hover,
+#nav .site-page:hover,
+#nav .menu-item a:hover {
+  color: var(--lm-c-hover) !important;
+}
+
+/* 文章标题装饰 */
+#article-container h1::before,
+.article-container h1::before,
+#article-container h2::before,
+.article-container h2::before {
+  color: var(--lm-c-main) !important;
+  background: var(--lm-c-main) !important;
+}
+
+/* 标题锚点 */
+#article-container .headerlink,
+.article-container .headerlink {
+  color: var(--lm-c-main) !important;
+  background: var(--lm-c-tint) !important;
+}
+
+/* 分页当前页 */
+#pagination .page-number.current,
+.pagination .page-number.current,
+.navbar .navbar-nav .nav-item .nav-link.active {
+  background: var(--lm-c-main) !important;
+  border-color: var(--lm-c-main) !important;
+  color: #fff !important;
+}
+
+#pagination .page-number:hover,
+.pagination .page-number:hover {
+  color: var(--lm-c-main) !important;
+}
+
+/* 标签云 */
+.tagcloud a,
+.tag_cloud a,
+#tag .tag-cloud a {
+  color: var(--lm-c-main) !important;
+}
+.tagcloud a:hover,
+#tag .tag-cloud a:hover {
+  background: var(--lm-c-main) !important;
+  color: #fff !important;
+}
+
+#tag .tags-p a,
+#tag .tag-cloud-tags a {
+  color: var(--lm-c-main) !important;
+  border-color: var(--lm-c-main) !important;
+}
+#tag .tags-p a:hover,
+#tag .tag-cloud-tags a:hover,
+#tag .tags-p a.active,
+#tag .tag-cloud-tags a.active {
+  background: var(--lm-c-main) !important;
+  color: #fff !important;
+}
+
+/* 分类 */
+#category .category-list a,
+.category-list a {
+  color: var(--lm-c-main) !important;
+}
+#category .category-list a:hover,
+.category-list a:hover {
+  background: var(--lm-c-main) !important;
+  color: #fff !important;
+}
+
+/* 按钮(回顶、回评论) */
+#to_comment,
+#to_top,
+#to_comment:hover,
+#to_top:hover,
+.button--primary,
+.article-button,
+button[type="submit"].btn,
+.btn-primary {
+  background: var(--lm-c-main) !important;
+  border-color: var(--lm-c-main) !important;
+}
+
+#to_comment:hover,
+#to_top:hover,
+.btn-primary:hover {
+  background: var(--lm-c-hover) !important;
+  border-color: var(--lm-c-hover) !important;
+}
+
+/* 顶部进度条 */
+#nav-hide,
+#nav.nav-fixed {
+  border-bottom-color: var(--lm-c-main) !important;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar-thumb {
+  background: var(--lm-c-alpha50) !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lm-c-main) !important;
+}
+
+/* 文本选区 */
+::selection {
+  background: var(--lm-c-alpha25) !important;
+  color: var(--lm-c-hover) !important;
+}
+
+/* 侧边栏卡片标题 */
+#aside-content .item_headline,
+.aside-content .item_headline {
+  color: var(--lm-c-main) !important;
+}
+#aside-content .item_headline::before,
+.aside-content .item_headline::before {
+  background: var(--lm-c-main) !important;
+}
+
+/* 归档 / 分类 / 标签 列表项 hover */
+#aside-content .card-archives ul.card-archive-list-item > a:hover,
+#aside-content .card-categories ul.card-category-list-item > a:hover,
+.aside-content .card-archives ul.card-archive-list-item > a:hover,
+.aside-content .card-categories ul.card-category-list-item > a:hover {
+  color: var(--lm-c-main) !important;
+  background: var(--lm-c-tint) !important;
+}
+
+/* 代码块关键词 */
+#article-container code,
+.article-container code,
+.hljs {
+  color: var(--lm-c-main);
+}
+
+/* 文章 meta(日期、分类等) */
+#post-meta,
+.post-meta,
+.article-meta {
+  color: var(--lm-c-alpha75) !important;
+}
+
+/* 首页文章卡片标题 — 强制深色确保白底可见 */
+#recent-posts .recent-post-item > .recent-post-info > .article-title,
+#recent-posts .recent-post-info .article-title,
+.recent-post-info .article-title {
+  color: #1f2d3d !important;
+}
+
+#recent-posts .recent-post-item > .recent-post-info > .article-title:hover,
+#recent-posts .recent-post-info .article-title:hover,
+.recent-post-info .article-title:hover {
+  color: var(--lm-c-main) !important;
+}
+
+/* 顶栏激活状态 */
+#nav .menu-item.active a,
+#nav .site-page.active {
+  color: var(--lm-c-main) !important;
+}
+
+/* ============================================================
+   4. 切换面板 UI
+   ============================================================ */
+#lm-theme-switcher {
+  position: fixed;
+  left: 20px;
+  bottom: 80px;
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 10px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.10);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px) scale(0.96);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#lm-theme-switcher.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.lm-theme-dot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #444;
+  transition: background 0.18s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.lm-theme-dot:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.lm-theme-dot.is-active {
+  background: rgba(0, 0, 0, 0.06);
+  font-weight: 600;
+}
+
+.lm-theme-swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+#lm-theme-toggle-btn {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#lm-theme-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+#lm-theme-toggle-btn:active {
+  transform: translateY(0) scale(0.95);
+}
+
+#lm-theme-toggle-btn svg {
+  width: 22px;
+  height: 22px;
+  color: var(--lm-c-main);
+}
+
+/* ============================================================
+   5. 暗色模式下面板适配
+   ============================================================ */
+[data-theme="dark"] #lm-theme-switcher,
+[data-mode="dark"] #lm-theme-switcher {
+  background: rgba(40, 40, 40, 0.92);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .lm-theme-dot,
+[data-mode="dark"] .lm-theme-dot {
+  color: #ddd;
+}
+
+[data-theme="dark"] .lm-theme-dot:hover,
+[data-mode="dark"] .lm-theme-dot:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] #lm-theme-toggle-btn,
+[data-mode="dark"] #lm-theme-toggle-btn {
+  background: #2a2a2a;
+}
+
+[data-theme="dark"] #lm-theme-toggle-btn svg,
+[data-mode="dark"] #lm-theme-toggle-btn svg {
+  color: var(--lm-c-main);
+}
+
+/* ============================================================
+   6. 封面图缩略图化 — 让封面与文章紧凑关联
+   ============================================================ */
+
+/* 文章卡片改为 flex 布局 */
+#recent-posts .recent-post-item {
+    display: flex !important;
+    align-items: center !important;
+    padding: 16px 20px !important;
+    gap: 20px !important;
+}
+
+/* 封面图容器缩为缩略图 */
+#recent-posts .recent-post-item .post_cover {
+    flex-shrink: 0 !important;
+    width: 160px !important;
+    height: 100px !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+    margin: 0 !important;
+    order: 1 !important;
+}
+
+/* 右侧排列时封面也在左(order统一) */
+#recent-posts .recent-post-item.reverse > .post_cover,
+#recent-posts .recent-post-item:nth-child(even) > .post_cover {
+    order: 1 !important;
+    margin-right: 0 !important;
+}
+
+/* 封面图填满缩略图容器 */
+#recent-posts .recent-post-item .post_cover img,
+#recent-posts .recent-post-item .post_cover .post_bg {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+/* 文章信息区域占据剩余空间 */
+#recent-posts .recent-post-item .recent-post-info {
+    flex: 1 !important;
+    order: 2 !important;
+    min-width: 0 !important;
+}
+
+/* 文章标题缩小 */
+#recent-posts .recent-post-item .article-title {
+    font-size: 1.15rem !important;
+    margin-bottom: 8px !important;
+}
+
+/* 文章摘要缩小 */
+#recent-posts .recent-post-item .content {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+    -webkit-line-clamp: 2 !important;
+}
+
+/* 响应式:小屏幕时缩略图更小 */
+@media (max-width: 768px) {
+    #recent-posts .recent-post-item .post_cover {
+        width: 100px !important;
+        height: 70px !important;
+    }
+    #recent-posts .recent-post-item .article-title {
+        font-size: 1rem !important;
+    }
+}
+
+/* ============================================================
+   页脚版权区缩小(仅降高度,不改字号)
+   ============================================================ */
+#footer {
+  padding: 0 20px !important;
+  margin-top: 0 !important;
+}
+#footer-wrap {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+#footer .footer-content,
+#footer .framework_info,
+#footer .framework-info,
+#footer .copyright-info,
+#footer .footer_custom_info,
+#footer .footer-banner {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
+}
+#footer p {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
+}
+#footer hr {
+  display: none !important;
+}
+#footer .copyright,
+#footer .framework_info,
+#footer .info,
+#footer .footer-info {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+
+/* ============================================================
+   POETIZE 风格简洁纯文本标签云
+   ============================================================ */
+/* ---- 首页文章卡片中的标签:纯文本 ---- */
+.article-meta .tags,
+.post-meta .tags {
+  display: inline-flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 0 !important;
+}
+.article-meta .tags a,
+.post-meta .tags a,
+a.tag,
+.tag-list a {
+  display: inline !important;
+  padding: 0 6px 0 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  font-size: 0.82rem !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  border: none !important;
+  background: transparent !important;
+  color: var(--lm-c-main) !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  transition: color 0.2s ease !important;
+  position: relative !important;
+}
+.article-meta .tags a:not(:last-child)::after,
+.post-meta .tags a:not(:last-child)::after,
+a.tag:not(:last-child)::after,
+.tag-list a:not(:last-child)::after {
+  content: '' !important;
+  display: inline-block !important;
+  width: 3px !important;
+  height: 3px !important;
+  border-radius: 50% !important;
+  background: var(--lm-c-alpha50) !important;
+  margin: 0 6px 0 6px !important;
+  vertical-align: middle !important;
+}
+.article-meta .tags a:hover,
+.post-meta .tags a:hover,
+a.tag:hover,
+.tag-list a:hover {
+  color: var(--lm-c-hover) !important;
+  background: transparent !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+/* ---- 侧边栏标签云:由 tag-cloud-3d.js 控制,不覆盖颜色 ---- */
+.card-tag-cloud {
+  cursor: pointer;
+}
+/* ---- 标签页:纯文本居中排列 ---- */
+#tag .tag-cloud,
+.tag_cloud {
+  text-align: center !important;
+  padding: 30px 20px !important;
+  line-height: 2.4 !important;
+}
+#tag .tag-cloud a,
+.tag_cloud a {
+  display: inline-block !important;
+  padding: 4px 10px !important;
+  margin: 4px 4px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  color: var(--lm-c-main) !important;
+  font-weight: 400 !important;
+  box-shadow: none !important;
+  transition: color 0.2s ease !important;
+}
+#tag .tag-cloud a:hover,
+.tag_cloud a:hover {
+  color: var(--lm-c-hover) !important;
+  background: transparent !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+/* ---- 分类页:纯文本 ---- */
+.category-list a {
+  display: inline-block !important;
+  padding: 4px 10px !important;
+  margin: 4px !important;
+  border-radius: 0 !important;
+  color: var(--lm-c-main) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: color 0.2s ease !important;
+}
+.category-list a:hover {
+  color: var(--lm-c-hover) !important;
+  background: transparent !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+/* ============================================================
+   7. 暗色模式已关闭 — 此节留空
+   ============================================================ */
+
+/* ============================================================
+   8. 博客文章页标题修复 — 白色标题在浅色封面上不可见
+   ============================================================ */
+#post-info .post-title {
+  color: #1f2d3d !important;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.6) !important;
+}

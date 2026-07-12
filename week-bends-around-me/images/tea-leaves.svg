@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eaf1e0"/>
+      <stop offset="1" stop-color="#cfe0b5"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="300" fill="url(#sky2)"/>
+  <rect x="0" y="220" width="600" height="80" fill="#8d7654" opacity="0.4"/>
+  <g transform="translate(140,180)" fill="#6b8e5a" opacity="0.8">
+    <rect x="-3" y="0" width="6" height="50"/>
+    <ellipse cx="0" cy="-10" rx="40" ry="30" fill="#6b8e5a" opacity="0.7"/>
+    <ellipse cx="-22" cy="-2" rx="18" ry="12" fill="#557a45" opacity="0.85"/>
+    <ellipse cx="22" cy="-2" rx="18" ry="12" fill="#557a45" opacity="0.85"/>
+  </g>
+  <g transform="translate(430,150)" fill="none" stroke="#557a45" stroke-width="2">
+    <path d="M0,0 q-10,-8 -20,-2 q-6,8 0,14 q14,2 20,-12 Z" fill="#7ba368" opacity="0.75"/>
+    <path d="M0,0 q10,-8 20,-2 q6,8 0,14 q-14,2 -20,-12 Z" fill="#7ba368" opacity="0.55"/>
+  </g>
+  <g transform="translate(300,210)">
+    <path d="M-30,30 q0,-30 30,-30 q30,0 30,30 q0,10 -10,10 l-40,0 q-10,0 -10,-10 Z" fill="#f6e3c2" stroke="#a8744a" stroke-width="2"/>
+    <path d="M0,0 q-4,10 0,20" fill="none" stroke="#9ec5d8" stroke-width="2" opacity="0.8"/>
+    <path d="M-6,2 q-3,6 0,12" fill="none" stroke="#9ec5d8" stroke-width="2" opacity="0.7"/>
+    <path d="M6,2 q3,6 0,12" fill="none" stroke="#9ec5d8" stroke-width="2" opacity="0.7"/>
+  </g>
+  <text x="300" y="290" font-family="serif" font-size="14" fill="#3a4a2a" text-anchor="middle" opacity="0.75">风过林梢,叶子翻一下,又翻回来</text>
+</svg>
