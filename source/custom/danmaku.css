@@ -1,0 +1,248 @@
+﻿/* ============================================================
+   LazyMondy · 慢调周记 — 留言页弹幕 + 样式 v2
+   ============================================================ */
+
+/* 留言页整体 */
+#lm-message-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+/* 顶部标题区 */
+.lm-message-hero {
+  text-align: center;
+  padding: 28px 0 16px;
+}
+.lm-message-title {
+  font-size: 1.75rem;
+  color: var(--lm-c-main, #a8744a);
+  font-weight: 600;
+  margin: 0 0 6px;
+  letter-spacing: 3px;
+}
+.lm-message-sub {
+  font-size: 0.85rem;
+  color: #999;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* 弹幕舞台 */
+#lm-danmaku-stage {
+  position: relative;
+  height: 300px;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(168,116,74,0.05), transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(107,142,90,0.05), transparent 60%);
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 16px 0;
+  border: 1px solid rgba(168,116,74,0.1);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+}
+.lm-danmaku-hint {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  font-size: 0.7rem;
+  color: #c0c0c0;
+  z-index: 1;
+  pointer-events: none;
+  letter-spacing: 1px;
+}
+
+/* 单条弹幕 — 纯文字 + 描边 */
+.lm-danmaku-item {
+  position: absolute;
+  white-space: nowrap;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  pointer-events: auto;
+  cursor: default;
+  will-change: transform;
+  transition: opacity 0.2s, transform 0.2s;
+  background: transparent !important;
+  /* 描边 */
+  text-shadow:
+    1px 1px 0 rgba(255,255,255,0.95),
+    -1px 1px 0 rgba(255,255,255,0.95),
+    1px -1px 0 rgba(255,255,255,0.95),
+    -1px -1px 0 rgba(255,255,255,0.95),
+    0 0 4px rgba(255,255,255,0.6);
+}
+.lm-danmaku-item:hover {
+  opacity: 0.75;
+  transform: scale(1.05);
+}
+
+/* 弹幕配色(8色,只改文字色,无背景) */
+.lm-danmaku-item:nth-child(8n+1) { color: #a8744a; }
+.lm-danmaku-item:nth-child(8n+2) { color: #6b8e5a; }
+.lm-danmaku-item:nth-child(8n+3) { color: #6b88a8; }
+.lm-danmaku-item:nth-child(8n+4) { color: #c97b5a; }
+.lm-danmaku-item:nth-child(8n+5) { color: #8a6ba8; }
+.lm-danmaku-item:nth-child(8n+6) { color: #5a9b8a; }
+.lm-danmaku-item:nth-child(8n+7) { color: #b89860; }
+.lm-danmaku-item:nth-child(8n)   { color: #7a8a9a; }
+
+/* 输入区 */
+.lm-message-input-area {
+  display: flex;
+  gap: 10px;
+  margin: 14px 0 28px;
+  padding: 0 4px;
+}
+#lm-danmaku-input {
+  flex: 1;
+  padding: 11px 18px;
+  border: 1px solid rgba(168,116,74,0.2);
+  border-radius: 22px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fff;
+  color: #333;
+  font-family: inherit;
+}
+#lm-danmaku-input:focus {
+  border-color: var(--lm-c-main, #a8744a);
+  box-shadow: 0 0 0 3px rgba(168,116,74,0.08);
+}
+#lm-danmaku-input::placeholder {
+  color: #bbb;
+}
+#lm-danmaku-send {
+  padding: 11px 26px;
+  border: none;
+  border-radius: 22px;
+  background: var(--lm-c-main, #a8744a);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(168,116,74,0.25);
+}
+#lm-danmaku-send:hover {
+  background: var(--lm-c-hover, #8d5e36);
+  box-shadow: 0 4px 12px rgba(168,116,74,0.35);
+}
+#lm-danmaku-send:active {
+  transform: scale(0.96);
+}
+
+/* 评论区 */
+.lm-message-comments {
+  margin-top: 16px;
+  padding: 0 4px;
+}
+.lm-comments-heading {
+  font-size: 1.05rem;
+  color: var(--lm-c-main, #a8744a);
+  border-bottom: 1px solid rgba(168,116,74,0.2);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.lm-comments-hint {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin: 8px 0;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] #lm-danmaku-stage {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(168,116,74,0.08), transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(107,142,90,0.08), transparent 60%);
+  border-color: rgba(255,255,255,0.06);
+}
+[data-theme="dark"] #lm-danmaku-input {
+  background: #2a2a2a;
+  color: #ddd;
+  border-color: rgba(255,255,255,0.1);
+}
+[data-theme="dark"] .lm-danmaku-item {
+  text-shadow:
+    1px 1px 0 rgba(0,0,0,0.9),
+    -1px 1px 0 rgba(0,0,0,0.9),
+    1px -1px 0 rgba(0,0,0,0.9),
+    -1px -1px 0 rgba(0,0,0,0.9),
+    0 0 4px rgba(0,0,0,0.6);
+}
+/* 弹幕文字部分 */
+.lm-dmk-text { pointer-events: none; }
+
+/* 点赞按钮 */
+.lm-dmk-like {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 8px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.85);
+  cursor: pointer;
+  pointer-events: auto;
+  vertical-align: middle;
+  transition: background 0.2s, transform 0.15s;
+  text-shadow: none;
+  line-height: 1;
+}
+.lm-dmk-like:hover {
+  background: rgba(255,255,255,1);
+  transform: scale(1.15);
+}
+.lm-dmk-like.liked {
+  background: rgba(231,76,60,0.12);
+}
+.lm-dmk-heart {
+  display: inline-block;
+  vertical-align: middle;
+  color: #999;
+  transition: color 0.2s;
+}
+.lm-dmk-like.liked .lm-dmk-heart {
+  color: #e74c3c;
+}
+.lm-dmk-count {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #666;
+  min-width: 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.lm-dmk-like.liked .lm-dmk-count {
+  color: #e74c3c;
+}
+
+/* 点赞动画 */
+.lm-dmk-like.pulse {
+  animation: lmHeartPulse 0.4s ease;
+}
+@keyframes lmHeartPulse {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+/* 暗色模式点赞 */
+[data-theme="dark"] .lm-dmk-like {
+  background: rgba(0,0,0,0.5);
+}
+[data-theme="dark"] .lm-dmk-like:hover {
+  background: rgba(0,0,0,0.8);
+}
+[data-theme="dark"] .lm-dmk-heart {
+  color: #aaa;
+}
+[data-theme="dark"] .lm-dmk-count {
+  color: #aaa;
+}

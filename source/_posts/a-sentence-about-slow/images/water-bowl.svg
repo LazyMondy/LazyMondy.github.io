@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="basin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8dcc9"/>
+      <stop offset="1" stop-color="#c9b894"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9ec5d8" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#6b88a8" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="300" fill="url(#basin)"/>
+  <ellipse cx="300" cy="170" rx="200" ry="70" fill="#8d7654" opacity="0.45"/>
+  <ellipse cx="300" cy="165" rx="180" ry="55" fill="url(#water)"/>
+  <g transform="translate(280,140)" fill="#d8e4ec" stroke="#6b88a8" stroke-width="1.5">
+    <ellipse cx="0" cy="10" rx="34" ry="14"/>
+    <path d="M-30,8 q-6,-18 8,-22 q14,4 8,22 Z" fill="#f0f4f7"/>
+  </g>
+  <g transform="translate(370,150)" fill="none" stroke="#9ec5d8" stroke-width="2" opacity="0.8">
+    <path d="M0,0 q-4,14 0,28"/>
+    <path d="M-6,4 q-3,10 0,18"/>
+    <path d="M6,4 q3,10 0,18"/>
+  </g>
+  <g fill="#9ec5d8" opacity="0.6">
+    <circle cx="220" cy="180" r="2"/>
+    <circle cx="240" cy="190" r="1.5"/>
+    <circle cx="410" cy="175" r="1.8"/>
+  </g>
+  <text x="300" y="280" font-family="serif" font-size="14" fill="#5a4030" text-anchor="middle" opacity="0.75">水从手上过,碗一个个干净</text>
+</svg>

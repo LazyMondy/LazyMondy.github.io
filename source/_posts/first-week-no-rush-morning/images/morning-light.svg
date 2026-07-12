@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6e3c2"/>
+      <stop offset="1" stop-color="#e9c79a"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff4d6" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#fff4d6" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="300" fill="url(#sky)"/>
+  <rect x="0" y="0" width="600" height="300" fill="#3a2a1f" opacity="0.18"/>
+  <path d="M80,0 L160,0 L300,300 L220,300 Z" fill="url(#beam)"/>
+  <path d="M340,0 L400,0 L520,300 L460,300 Z" fill="url(#beam)" opacity="0.7"/>
+  <rect x="60" y="200" width="480" height="80" rx="6" fill="#8d5e36" opacity="0.55"/>
+  <rect x="60" y="200" width="480" height="14" rx="6" fill="#fff4d6" opacity="0.6"/>
+  <text x="300" y="280" font-family="serif" font-size="14" fill="#5a3f23" text-anchor="middle" opacity="0.7">一线光,落在被角</text>
+</svg>

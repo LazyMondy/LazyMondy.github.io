@@ -1,0 +1,280 @@
+﻿/* ============================================================
+   LazyMondy · 慢调周记 — 时光页面 v1
+   ------------------------------------------------------------
+   建站计时 + 节日倒计时
+   配色跟随主题色 (--lm-c-main)
+   ============================================================ */
+
+#lm-timeline-page {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 2rem 1.2rem 4rem;
+  color: #2c2c2c;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+/* ---------- Hero ---------- */
+.lm-tl-hero {
+  text-align: center;
+  margin-bottom: 2.4rem;
+  animation: lm-tl-fade-in 0.8s ease both;
+}
+
+.lm-tl-title {
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: 6px;
+  color: var(--lm-c-main, #a8744a);
+  margin: 0 0 0.4em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.lm-tl-sub {
+  font-size: 0.95rem;
+  color: #888;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+/* ---------- 建站计时 ---------- */
+.lm-tl-built {
+  background: linear-gradient(180deg, var(--lm-c-tint, rgba(168, 116, 74, 0.08)) 0%, rgba(255, 255, 255, 0.6) 100%);
+  border: 1px solid var(--lm-c-alpha25, rgba(168, 116, 74, 0.25));
+  border-radius: 14px;
+  padding: 2rem 1.2rem 1.6rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 20px rgba(168, 116, 74, 0.08);
+  animation: lm-tl-fade-in 0.9s 0.1s ease both;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.lm-tl-built-label {
+  font-size: 0.92rem;
+  color: #6a6a6a;
+  letter-spacing: 4px;
+  margin-bottom: 1rem;
+}
+
+.lm-tl-built-time {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.3em 0.2em;
+  margin: 0.5rem 0 1.2rem;
+}
+
+.lm-tl-cell {
+  display: inline-flex;
+  align-items: baseline;
+  min-width: 2.6em;
+  justify-content: center;
+  padding: 0 0.15em;
+}
+
+.lm-tl-num {
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--lm-c-main, #a8744a);
+  line-height: 1;
+  font-family: "Georgia", "Times New Roman", serif;
+  transition: color 0.3s ease;
+}
+
+.lm-tl-unit {
+  font-size: 0.85rem;
+  color: #888;
+  margin-left: 0.2em;
+  letter-spacing: 1px;
+}
+
+.lm-tl-built-from {
+  font-size: 0.82rem;
+  color: #999;
+  letter-spacing: 1.5px;
+  font-style: italic;
+}
+
+/* ---------- 节日区 ---------- */
+.lm-tl-holidays {
+  margin-top: 1rem;
+}
+
+.lm-tl-holidays-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #3a3a3a;
+  letter-spacing: 4px;
+  text-align: center;
+  margin: 0 0 0.3em;
+  position: relative;
+}
+
+.lm-tl-holidays-title::before,
+.lm-tl-holidays-title::after {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--lm-c-alpha50, rgba(168, 116, 74, 0.5));
+  vertical-align: middle;
+  margin: 0 0.8em;
+}
+
+.lm-tl-holidays-hint {
+  font-size: 0.85rem;
+  color: #999;
+  text-align: center;
+  letter-spacing: 1.5px;
+  margin: 0 0 1.8rem;
+}
+
+.lm-tl-holidays-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.lm-tl-holi-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  padding: 1.1rem 1rem 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+  animation: lm-tl-fade-in 0.6s ease both;
+}
+
+.lm-tl-holi-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--lm-c-main, #a8744a);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.lm-tl-holi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(168, 116, 74, 0.15);
+  border-color: var(--lm-c-alpha50, rgba(168, 116, 74, 0.5));
+}
+
+.lm-tl-holi-card:hover::before {
+  opacity: 1;
+}
+
+.lm-tl-holi-card.is-nearest {
+  background: linear-gradient(180deg, var(--lm-c-tint, rgba(168, 116, 74, 0.08)) 0%, #fff 100%);
+  border-color: var(--lm-c-alpha50, rgba(168, 116, 74, 0.5));
+}
+
+.lm-tl-holi-card.is-nearest::before {
+  opacity: 1;
+  height: 4px;
+}
+
+.lm-tl-holi-card.is-nearest .lm-tl-holi-badge {
+  display: inline-block;
+}
+
+.lm-tl-holi-badge {
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.65rem;
+  color: #fff;
+  background: var(--lm-c-main, #a8744a);
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+
+.lm-tl-holi-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0.3em 0 0.2em;
+  letter-spacing: 1px;
+}
+
+.lm-tl-holi-date {
+  font-size: 0.78rem;
+  color: #999;
+  letter-spacing: 1px;
+  margin-bottom: 0.8rem;
+}
+
+.lm-tl-holi-countdown {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.15em;
+  flex-wrap: wrap;
+}
+
+.lm-tl-holi-cd-num {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--lm-c-main, #a8744a);
+  font-variant-numeric: tabular-nums;
+  font-family: "Georgia", "Times New Roman", serif;
+  line-height: 1;
+}
+
+.lm-tl-holi-cd-unit {
+  font-size: 0.72rem;
+  color: #888;
+  margin: 0 0.2em 0 0.05em;
+}
+
+.lm-tl-holi-card.is-today {
+  background: linear-gradient(180deg, var(--lm-c-alpha25, rgba(168, 116, 74, 0.25)) 0%, #fff 100%);
+}
+
+.lm-tl-holi-card.is-today .lm-tl-holi-countdown {
+  display: none;
+}
+
+.lm-tl-holi-today-mark {
+  display: none;
+  font-size: 0.9rem;
+  color: var(--lm-c-main, #a8744a);
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-top: 0.4rem;
+}
+
+.lm-tl-holi-card.is-today .lm-tl-holi-today-mark {
+  display: block;
+}
+
+/* ---------- 动画 ---------- */
+@keyframes lm-tl-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 640px) {
+  #lm-timeline-page { padding: 1.5rem 0.8rem 3rem; }
+  .lm-tl-title { font-size: 1.8rem; letter-spacing: 4px; }
+  .lm-tl-num { font-size: 1.7rem; }
+  .lm-tl-cell { min-width: 2.2em; }
+  .lm-tl-holidays-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lm-tl-hero, .lm-tl-built, .lm-tl-holi-card {
+    animation: none;
+  }
+  .lm-tl-holi-card:hover {
+    transform: none;
+  }
+}

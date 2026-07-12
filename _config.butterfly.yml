@@ -1,0 +1,402 @@
+﻿# ============================================================
+# Butterfly 主题配置 — LazyMondy · 慢调周记
+# ------------------------------------------------------------
+# 基于 Butterfly 5.5.5 默认配置,只覆盖需要自定义的部分
+# 站点信息在 _config.yml,不在此文件
+# 待补充项以 TODO 标注
+# ============================================================
+
+# ---------- 导航 ----------
+nav:
+  display_title: true
+  display_post_title: true
+  fixed: false
+
+menu:
+  首页: / || fas fa-home
+  归档: /archives/ || fas fa-archive
+  分类: /categories/ || fas fa-folder-open
+  闲言: /essays/ || fas fa-comment-dots
+  留言: /message/ || fas fa-envelope-open-text
+  友链: /links/ || fas fa-link
+  关于: /about/ || fas fa-user
+  时光: /timeline/ || fas fa-hourglass-half
+
+# 社交链接(留空待补充)
+social:
+  # fab fa-github: https://github.com/xxxxx || Github || '#24292e'
+  # fas fa-envelope: mailto:xxxxxx@gmail.com || Email || '#4a7dbe'
+
+# ---------- 图片 ----------
+# TODO: 放入 source/images/favicon.ico 后改路径
+favicon: /img/favicon.ico
+
+avatar:
+  # TODO: 放入头像图片后改路径
+  img: /images/default-cover.jpg
+  effect: false
+
+# 不禁用顶部图
+disable_top_img: false
+
+# 默认顶部图(留空用主题渐变)
+default_top_img:
+index_img: /images/index-bg.jpg
+archive_img:
+tag_img:
+category_img:
+
+# 页脚背景图
+footer_img: false
+
+# 网站背景(留空用默认)
+background:
+
+# ---------- 封面 ----------
+cover:
+  index_enable: true
+  aside_enable: true
+  archives_enable: true
+  # 文章未设封面时的默认封面列表(留空则不显示封面)
+  default_cover:
+
+# 图片出错替换
+error_img:
+  flink: /img/friend_404.gif
+  post_page: /img/404.jpg
+
+# 404 页面
+error_404:
+  enable: true
+  subtitle: '页面走丢了,不急,慢慢找'
+  background: /img/error-page.png
+
+# ---------- 文章 meta ----------
+post_meta:
+  page:
+    date_type: both
+    date_format: date
+    categories: true
+    tags: false
+    label: true
+  post:
+    position: left
+    date_type: both
+    date_format: date
+    categories: true
+    tags: true
+    label: true
+
+# ---------- 首页设置 ----------
+# 首页文章布局:3 = 封面和信息左右交替
+index_layout: 3
+
+# 首页文章摘要显示方式
+# 1: description / 2: both / 3: auto_excerpt
+index_post_content:
+  method: 2
+  length: 500
+
+# ---------- 副标题打字机效果 ----------
+subtitle:
+  enable: true
+  effect: true
+  typed_option:
+  source: false
+  sub:
+    - 没有赶时间的角落
+    - 这里没有 deadline
+    - 只有星期绕着我转的悠闲
+    - 记录从容生活中的灵感与思考
+
+# ---------- 文章页 ----------
+# 文章目录 TOC
+toc:
+  post: true
+  page: false
+  number: false
+  expand: false
+  style_simple: false
+  scroll_percent: true
+
+# 文章版权
+post_copyright:
+  enable: true
+  decode: false
+  author_href: https://你的用户名.github.io
+  license: CC BY-NC-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+# 打赏(关闭)
+reward:
+  enable: false
+  text:
+  QR_code:
+    # - img: /img/wechat.jpg
+    #   link:
+    #   text: wechat
+
+# 相关文章
+related_post:
+  enable: true
+  limit: 6
+  date_type: created
+
+# 文章翻页
+post_pagination: 1
+
+# ---------- 字数统计 ----------
+# 需要 hexo-wordcount 插件
+wordcount:
+  enable: true
+  post_wordcount: true
+  min2read: true
+  total_wordcount: true
+
+# ---------- 不蒜子访问统计 ----------
+busuanzi:
+  site_uv: true
+  site_pv: true
+  page_pv: true
+
+# ---------- 页脚 ----------
+footer:
+  owner:
+    enable: true
+    since: 2026
+  copyright:
+    enable: true
+    version: true
+  custom_text: 风过林梢,日子慢慢长
+
+# ---------- 侧边栏 ----------
+aside:
+  enable: true
+  hide: false
+  button: true
+  mobile: true
+  position: right
+  display:
+    archive: true
+    tag: true
+    category: true
+  card_author:
+    enable: true
+    description: LazyMondy · 慢调周记
+    button:
+      enable: true
+      icon: fas fa-feather
+      text: 关于我
+      link: /about/
+  card_announcement:
+    enable: true
+    content: 不赶时间,星期会自己绕过来。
+  card_recent_post:
+    enable: true
+    limit: 5
+    sort: date
+    sort_order:
+  card_newest_comments:
+    enable: false
+    sort_order:
+    limit: 6
+    storage: 10
+    avatar: true
+  card_categories:
+    enable: true
+    limit: 8
+    expand: none
+    sort_order:
+  card_tags:
+    enable: true
+    limit: 40
+    color: false
+    custom_colors:
+    orderby: random
+    order: 1
+    sort_order:
+  card_archives:
+    enable: true
+    type: monthly
+    format: YYYY年MM月
+    order: -1
+    limit: 8
+    sort_order:
+  card_post_series:
+    enable: true
+    series_title: 慢调周记
+    orderBy: 'date'
+    order: -1
+  card_webinfo:
+    enable: true
+    post_count: true
+    last_push_date: true
+    sort_order:
+    runtime_date:
+
+# ---------- 暗色模式 ----------
+darkmode:
+  enable: false
+  button: false
+  # 1: 跟随系统 / 2: 6pm-6am自动 / false: 手动
+  autoChangeMode: false
+  start:
+  end:
+
+# 默认显示模式
+display_mode: light
+
+# 阅读模式
+readmode: true
+
+# ---------- 代码块 ----------
+code_blocks:
+  theme: light
+  macStyle: false
+  height_limit: false
+  word_wrap: false
+  copy: true
+  language: true
+  shrink: false
+  fullpage: false
+
+# ---------- 本地搜索 ----------
+# 需要 hexo-generator-searchdb 插件
+search:
+  use: local_search
+  placeholder: 搜索文章...
+  local_search:
+    preload: true
+    top_n_per_article: 3
+    unescape: false
+    pagination:
+      enable: false
+      hitsPerPage: 8
+    CDN:
+
+# ---------- 评论(Giscus) ----------
+comments:
+  use:
+    - giscus
+  text: true
+  lazyload: false
+  count: false
+  card_post_count: false
+
+giscus:
+  repo: 你的用户名/你的用户名.github.io
+  repo_id: # TODO: 到 https://giscus.app 生成
+  category_id: # TODO: 到 https://giscus.app 生成
+  light_theme: light
+  dark_theme: dark
+  js:
+  option:
+
+# ---------- 主题色 ----------
+theme_color:
+  enable: true
+  main: "#a8744a"
+  paginator: "#a8744a"
+  button_hover: "#8d5e36"
+  text_selection: "rgba(168, 116, 74, 0.3)"
+  link_color: "#a8744a"
+  meta_color: "#858585"
+  hr_color: "#c9986b"
+  code_foreground: "#a8744a"
+  code_background: "rgba(168, 116, 74, 0.08)"
+  toc_color: "#a8744a"
+  blockquote_padding_color: "#a8744a"
+  blockquote_background_color: "rgba(168, 116, 74, 0.1)"
+  scrollbar_color: "#a8744a"
+  meta_theme_color_light: "ffffff"
+  meta_theme_color_dark: "#0d0d0d"
+
+# ---------- 字体 ----------
+font:
+  global_font_size:
+  code_font_size:
+  font_family: "'Noto Serif SC', 'Source Han Serif SC', serif"
+  code_font_family: "'JetBrains Mono', 'Consolas', monospace"
+
+# 站点标题字体
+blog_title_font:
+  font_link:
+  font_family:
+
+# ---------- 加载动画 ----------
+preloader:
+  enable: true
+  source: 1
+  pace_css_url:
+
+# 页面过渡动画
+enter_transitions: true
+
+# ---------- 美化 ----------
+# 圆角
+rounded_corners_ui: true
+
+# 文本两端对齐
+text_align_justify: false
+
+# 遮罩
+mask:
+  header: true
+  footer: true
+
+# 分割线图标
+hr_icon:
+  enable: true
+  icon:
+  icon_top:
+
+# ---------- 注入自定义资源 ----------
+# 多主题色切换 + 本周签
+inject:
+  head:
+    - <link rel="stylesheet" href="/custom/theme-switch.css">
+    - <link rel="stylesheet" href="/custom/week-sign.css">
+    - <link rel="stylesheet" href="/custom/danmaku.css">
+    - <link rel="stylesheet" href="/custom/timeline.css">
+    - <link rel="stylesheet" href="/custom/welcome-gate.css">
+  bottom:
+    - <script src="/custom/theme-switch.js"></script>
+    - <script src="/custom/week-sign.js"></script>
+    - <script src="/custom/tag-cloud-3d.js"></script>
+    - <script src="/custom/danmaku.js"></script>
+    - <script src="/custom/cursor-effects.js"></script>
+    - <script src="/custom/timeline.js"></script>
+    - <script src="/custom/welcome-gate.js"></script>
+
+# ---------- 其他 ----------
+# 复制
+copy:
+  enable: true
+  copyright:
+    enable: false
+    limit_count: 150
+
+# Pjax
+pjax:
+  enable: false
+  exclude:
+
+# 图片灯箱(留空不启用)
+lightbox:
+
+# 数学公式(关闭)
+math:
+  use:
+  per_page: true
+
+# PWA(关闭)
+pwa:
+  enable: false
+
+# CDN
+CDN:
+  internal_provider: local
+  third_party_provider: jsdelivr
+  version: true
+  custom_format:
+  option:
